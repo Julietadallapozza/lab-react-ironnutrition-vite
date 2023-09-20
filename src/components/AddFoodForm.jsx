@@ -13,12 +13,23 @@ function AddFood(props) {
     const [servings, setServings] = useState(0);
     const handleServignsInput = e => setServings(e.target.value);
 
+    const handleSubmit = (e) => {   
+        e.preventDefault();    
+        const newFood = { name, image, calories, servings };
+
+        console.log("Submitted: ", newFood);
+        props.addNewFood(newFood);
+    }
+
+
+
+ 
 
     return (
         <div className="AddFood">
             <h4>Add a Food</h4>
 
-            <form>
+            <form onSubmit={handleSubmit} > 
                 <label>Name: </label>
                 <input
                     type="text"
